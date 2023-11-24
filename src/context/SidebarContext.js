@@ -1,7 +1,6 @@
 import useNotification from "@hooks/useNotification";
 import React, { useState, useMemo, createContext } from "react";
 
-// create context
 export const SidebarContext = createContext();
 
 export const SidebarProvider = ({ children }) => {
