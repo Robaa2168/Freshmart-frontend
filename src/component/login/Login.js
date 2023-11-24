@@ -25,7 +25,7 @@ const Login = ({ setShowResetPassword, setModalOpen }) => {
           <div className="form-group">
             <InputArea
               register={register}
-              defaultValue="cheron0sharon21@gmail.com"
+              defaultValue="cheronosharon21@gmail.com"
               label="Email"
               name="registerEmail"
               type="email"
