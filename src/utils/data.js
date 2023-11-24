@@ -49,21 +49,6 @@ const pages = [
     href: "/contact-us",
     icon: FiPhoneIncoming,
   },
-  {
-    title: "privacy-policy-page",
-    href: "/privacy-policy",
-    icon: FiPocket,
-  },
-  {
-    title: "terms-and-conditions-page",
-    href: "/terms-and-conditions",
-    icon: FiFileText,
-  },
-  {
-    title: "not-found-page",
-    href: "/404",
-    icon: FiAlertCircle,
-  },
 ];
 
 const userSidebar = [
