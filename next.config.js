@@ -48,6 +48,7 @@ module.exports = withPWA({
 
   images: {
     domains: [
+      "freshmart-plum.vercel.app",
       "images.unsplash.com",
       "img.icons8.com",
       "i.ibb.co",
