@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import dayjs from "dayjs";
+import requests from '../services/httpServices';
 import { useRouter } from "next/router";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,7 +15,7 @@ import CouponServices from "@services/CouponServices";
 import { notifyError, notifySuccess } from "@utils/toast";
 import SettingServices from "@services/SettingServices";
 
-const useCheckoutSubmit = () => {
+const useCheckoutSubmit = (mpesaPhone) => {
   const {
     state: { userInfo, shippingAddress },
     dispatch,
@@ -106,6 +107,47 @@ const useCheckoutSubmit = () => {
     setValue("zipCode", shippingAddress.zipCode);
   }, []);
 
+
+  const initiateMpesaPayment = async (orderInfo, mpesaPhone) => {
+    console.log("Initiating M-Pesa payment:", { orderInfo, mpesaPhone }); // Log the function call with parameters
+
+    try {
+      const response = await requests.post('/order/mpesa-pay', {
+        phone: mpesaPhone,
+        amount: orderInfo.total,
+      });
+
+        console.log("Response status:", response.status); // Log the response status
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const contentType = response.headers.get('content-type');
+        console.log("Content type:", contentType); // Log the content type
+
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Received non-JSON response from server.');
+        }
+
+        const data = await response.json();
+        console.log("Response data:", data); // Log the response data
+
+        if (data.success) {
+            notifySuccess("M-Pesa payment initiated successfully.");
+        } else {
+            notifyError("Failed to initiate M-Pesa payment: " + (data.message || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error("Error initiating M-Pesa payment:", error);
+        notifyError("Error initiating M-Pesa payment: " + error.message);
+    }
+};
+
+  
+
+
+
   const submitHandler = async (data) => {
     dispatch({ type: "SAVE_SHIPPING_ADDRESS", payload: data });
     Cookies.set("shippingAddress", JSON.stringify(data));
@@ -162,6 +204,11 @@ const useCheckoutSubmit = () => {
         return;
       }
     }
+    if (data.paymentMethod === "Mpesa") {
+      // Call handleMpesaPayment with orderInfo and mpesaPhone
+      await initiateMpesaPayment(orderInfo, mpesaPhone);
+    }
+
     if (data.paymentMethod === "Cash") {
       OrderServices.addOrder(orderInfo)
         .then((res) => {
@@ -184,7 +231,7 @@ const useCheckoutSubmit = () => {
       // console.log('try goes here!', order);
       // const updatedOrder = {
       //   ...order,
-      //   currency: 'usd',
+      //   currency: 'KES',
       // };
       OrderServices.createPaymentIntent(order)
         .then((res) => {

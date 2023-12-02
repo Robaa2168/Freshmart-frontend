@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { CardElement } from "@stripe/react-stripe-js";
 import Link from "next/link";
@@ -24,6 +24,7 @@ import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
 const Checkout = () => {
+  const [mpesaPhone, setMpesaPhone] = useState('');
   const {
     handleSubmit,
     submitHandler,
@@ -45,11 +46,20 @@ const Checkout = () => {
     cartTotal,
     currency,
     isCheckoutSubmit,
-  } = useCheckoutSubmit();
+  } = useCheckoutSubmit(mpesaPhone);
 
   const { t } = useTranslation();
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
+  const [isMpesaSelected, setIsMpesaSelected] = useState(false);
+ 
+
+  const handlePaymentMethodChange = (e) => {
+    setIsMpesaSelected(e.target.value === "Mpesa");
+  };
+
+
+
 
   return (
     <>
@@ -223,36 +233,63 @@ const Checkout = () => {
                         storeCustomizationSetting?.checkout?.payment_method
                       )}
                     </h2>
-                    {showCard && (
-                      <div className="mb-3">
-                        <CardElement />{" "}
-                        <p className="text-red-400 text-sm mt-1">{error}</p>
-                      </div>
-                    )}
-                    <div className="grid grid-cols-6 gap-6">
-                      <div className="col-span-6 sm:col-span-3">
-                        <InputPayment
-                          setShowCard={setShowCard}
-                          register={register}
-                          name={t("common:cashOnDelivery")}
-                          value="Cash"
-                          Icon={IoWalletSharp}
-                        />
-                        <Error errorName={errors.paymentMethod} />
-                      </div>
 
-                      <div className="col-span-6 sm:col-span-3">
-            {/* Replace Stripe Card input with M-Pesa input */}
-            <InputPayment
-                setShowCard={setShowCard}
-                register={register}
-                name={t("common:mpesa")}
-                value="Mpesa"
-                Icon={IoWalletSharp} // Replace with your M-Pesa icon
-            />
-            <Error errorName={errors.paymentMethod} />
-        </div>
+                  </div>
+
+                  <div className="grid grid-cols-6 gap-6">
+                    <div className="col-span-6 sm:col-span-3">
+                      <InputPayment
+                        setShowCard={setShowCard}
+                        register={register}
+                        name={t("common:cashOnDelivery")}
+                        value="Cash"
+                        Icon={IoWalletSharp}
+                        onChange={handlePaymentMethodChange}
+                      />
+                      <Error errorName={errors.paymentMethod} />
                     </div>
+
+                    <div className="col-span-6 sm:col-span-3">
+                      <div className="px-3 py-4 card border border-gray-200 bg-white rounded-md">
+                        <label className="cursor-pointer label">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              {/* M-Pesa Icon */}
+                              <span className="text-xl mr-3 text-gray-400">
+                                <IoWalletSharp />
+                              </span>
+                              {/* M-Pesa Label */}
+                              <h6 className="font-serif font-medium text-sm text-gray-600">
+                                M-Pesa
+                              </h6>
+                            </div>
+                            {/* M-Pesa Radio Input */}
+                            <input
+                              {...register("paymentMethod", { required: true })}
+                              type="radio"
+                              name="paymentMethod"
+                              value="Mpesa"
+                              className="form-radio outline-none focus:ring-0 text-emerald-500"
+                              onChange={handlePaymentMethodChange}
+                              checked={isMpesaSelected}
+                            />
+                          </div>
+                        </label>
+                      </div>
+                      {/* M-Pesa Phone Input */}
+                      {isMpesaSelected && (
+                        <input
+                          type="tel"
+                          placeholder="Enter M-Pesa phone number"
+                          value={mpesaPhone}
+                          onChange={(e) => setMpesaPhone(e.target.value)}
+                          className="mt-2 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-emerald-500 sm:text-sm"
+                        />
+                      )}
+                      <Error errorName={errors.paymentMethod} />
+                    </div>
+
+
                   </div>
 
                   <div className="grid grid-cols-6 gap-4 lg:gap-6 mt-10">
