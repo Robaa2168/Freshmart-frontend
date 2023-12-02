@@ -65,8 +65,7 @@ const CardTwo = () => {
               alt="Quick Delivery to Your Home"
               className="block w-auto object-contain"
               src={
-                storeCustomizationSetting?.home?.quick_delivery_img ||
-                "/cta/delivery-boy.png"
+                "/logo/delivery-boy.png"
               }
             />
           </div>

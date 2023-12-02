@@ -109,14 +109,14 @@ const ctaCardData = [
   {
     id: 2,
     title: "Taste of",
-    subTitle: "Fish & Meat",
+    subTitle: "Fast Delivery",
     image: "/cta/cta-bg-2.jpg",
     url: "/search?Category=fish--meat",
   },
   {
     id: 3,
     title: "Taste of",
-    subTitle: "Bread & Bakery",
+    subTitle: "Cheap Products",
     image: "/cta/cta-bg-3.jpg",
     url: "/search?Category=biscuits--cakes",
   },
@@ -163,7 +163,7 @@ const contactData = [
     title: "contact-page-box2-title",
     info: "contact-page-box2-info",
     icon: FiPhoneCall,
-    contact: "029-00124667",
+    contact: "+254727372017",
     className: "bg-yellow-100",
   },
   {

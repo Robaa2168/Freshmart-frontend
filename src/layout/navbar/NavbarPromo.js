@@ -245,21 +245,6 @@ const NavbarPromo = () => {
                                   </div>
                                 </span>
                               )}
-
-                             
-                              <span className="p-2  font-serif items-center rounded-md hover:bg-gray-50 w-full hover:text-emerald-600">
-                                <div className="w-full flex">
-                                  <FiAlertCircle className="my-auto" />
-                                  <Link href="/404">
-                                    <a
-                                      onClick={() => setIsLoading(!isLoading)}
-                                      className="relative inline-flex items-cente font-serif ml-2 py-0 rounded text-sm font-medium  hover:text-emerald-600"
-                                    >
-                                      404
-                                    </a>
-                                  </Link>
-                                </div>
-                              </span>
                             </div>
                           </div>
                         </Popover.Panel>
