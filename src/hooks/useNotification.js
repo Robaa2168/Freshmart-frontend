@@ -11,13 +11,8 @@ const useNotification = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Use the environment variable for the socket URL
-    const socketUrl = process.env.NEXT_PUBLIC_API_SOCKET_URL;
-    if (socketUrl) {
-      setSocket(io(socketUrl));
-    } else {
-      console.error("Socket URL is not defined in environment variables");
-    }
+    // setSocket(io(import.meta.env.VITE_APP_API_BASE_URL));
+    setSocket(io("http://localhost:5055"));
   }, []);
 
   useEffect(() => {
