@@ -139,15 +139,13 @@ const useCheckoutSubmit = (mpesaPhone) => {
         notifyError(`Failed to initiate M-Pesa payment: ${response.data.ResponseDescription || 'Unknown error'}`);
       }
     } catch (error) {
-      // Catch and log any errors
+      // Catch and log
       console.error("Error initiating M-Pesa payment:", error);
       notifyError("Error initiating M-Pesa payment: " + error.message);
     }
   };
 
   
-
-
 
   const submitHandler = async (data) => {
     dispatch({ type: "SAVE_SHIPPING_ADDRESS", payload: data });
