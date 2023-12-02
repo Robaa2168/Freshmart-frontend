@@ -454,7 +454,7 @@ const storeCustomization = {
         en: "Shop Now",
         de: "Jetzt einkaufen",
       },
-      second_link: "/search?category=fish-meat",
+      second_link: "/search?category=kale",
 
       third_img:
         "https://res.cloudinary.com/ahossain/image/upload/v1697688492/settings/slider-3_iw4nnf.jpg",
@@ -501,7 +501,7 @@ const storeCustomization = {
         en: "Shop Now",
         de: "Jetzt einkaufen",
       },
-      five_link: "/search?category=fish-meat",
+      five_link: "/search?category=kale",
     },
 
     checkout: {
@@ -725,7 +725,7 @@ const storeCustomization = {
         en: "Latest News",
         de: "Neueste Nachrichten",
       },
-      block2_sub_link1: "/search?category=fish-meat",
+      block2_sub_link1: "/search?category=kale",
       block2_sub_title2: {
         en: "Soft Drink",
         de: "Erfrischungsgetränk",
