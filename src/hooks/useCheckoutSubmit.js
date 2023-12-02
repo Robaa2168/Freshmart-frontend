@@ -109,40 +109,41 @@ const useCheckoutSubmit = (mpesaPhone) => {
 
 
   const initiateMpesaPayment = async (orderInfo, mpesaPhone) => {
-    console.log("Initiating M-Pesa payment:", { orderInfo, mpesaPhone }); // Log the function call with parameters
-
+    console.log(orderInfo);
     try {
       const response = await requests.post('/order/mpesa-pay', {
         phone: mpesaPhone,
         amount: orderInfo.total,
+        paymentIdentifier: orderInfo.paymentIdentifier,
+        initiatorPhoneNumber: orderInfo.user_info.contact,
       });
-
-        console.log("Response status:", response.status); // Log the response status
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const contentType = response.headers.get('content-type');
-        console.log("Content type:", contentType); // Log the content type
-
-        if (!contentType || !contentType.includes('application/json')) {
-            throw new Error('Received non-JSON response from server.');
-        }
-
-        const data = await response.json();
-        console.log("Response data:", data); // Log the response data
-
-        if (data.success) {
-            notifySuccess("M-Pesa payment initiated successfully.");
-        } else {
-            notifyError("Failed to initiate M-Pesa payment: " + (data.message || 'Unknown error'));
-        }
+  
+      if (response.success) {
+        // If the response is successful, display the success message
+        notifySuccess(`M-Pesa payment initiated successfully: ${response.data.ResponseDescription}`);
+        OrderServices.addOrder(orderInfo)
+        .then((res) => {
+          router.push(`/order/${res._id}`);
+          notifySuccess("Your order has been placed. We will send a confirmation email once the payment is processed.");
+          Cookies.remove("couponInfo");
+          sessionStorage.removeItem("products");
+          emptyCart();
+          setIsCheckoutSubmit(false);
+        })
+        .catch((err) => {
+          notifyError(err.message);
+          setIsCheckoutSubmit(false);
+        });
+      } else {
+        // If the response is not successful, display an error message
+        notifyError(`Failed to initiate M-Pesa payment: ${response.data.ResponseDescription || 'Unknown error'}`);
+      }
     } catch (error) {
-        console.error("Error initiating M-Pesa payment:", error);
-        notifyError("Error initiating M-Pesa payment: " + error.message);
+      // Catch and log any errors
+      console.error("Error initiating M-Pesa payment:", error);
+      notifyError("Error initiating M-Pesa payment: " + error.message);
     }
-};
+  };
 
   
 
@@ -174,7 +175,17 @@ const useCheckoutSubmit = (mpesaPhone) => {
       shippingCost: shippingCost,
       discount: discountAmount,
       total: total,
+      // Add a unique 8-digit payment identifier
+      paymentIdentifier: generateUniqueIdentifier(),
     };
+    
+    function generateUniqueIdentifier() {
+      // Generate a random 8-digit number
+      const min = 10000000;
+      const max = 99999999;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    
 
     if (data.paymentMethod === "Card") {
       if (!stripe || !elements) {
