@@ -12,7 +12,7 @@ const useNotification = () => {
 
   useEffect(() => {
     // setSocket(io(import.meta.env.VITE_APP_API_BASE_URL));
-    setSocket(io("http://localhost:5055"));
+    setSocket(io("https://freshmart-backend.vercel.app"));
   }, []);
 
   useEffect(() => {
