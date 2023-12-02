@@ -70,7 +70,7 @@ const Navbar = () => {
                   height={40}
                   src={
                     storeCustomizationSetting?.navbar?.header_logo ||
-                    "/logo/logo-light.svg"
+                    "/logo/Freshmart_round.PNG"
                   }
                   alt="logo"
                 />

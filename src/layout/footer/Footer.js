@@ -308,10 +308,9 @@ const Footer = () => {
                 <a className="mr-3 lg:mr-12 xl:mr-12" rel="noreferrer">
                   <Image
                     width={110}
-                    height={40}
+                    height={60}
                     src={
-                      storeCustomizationSetting?.footer?.block4_logo ||
-                      "/logo/logo-color.svg"
+                      "/logo/Freshmart_round.PNG"
                     }
                     alt="logo"
                   />
