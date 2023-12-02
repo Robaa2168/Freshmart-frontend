@@ -46,7 +46,7 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
                   <Image
                     width={110}
                     height={40}
-                    src="/logo/Freshmart_log.PNG"
+                    src="/logo/logo-color.svg"
                     alt="logo"
                   />
                 </a>

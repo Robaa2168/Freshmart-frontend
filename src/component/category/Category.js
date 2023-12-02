@@ -29,8 +29,8 @@ const Category = () => {
               <a className="mr-10">
                 <Image
                   width={100}
-                  height={38}
-                  src="/logo/Freshmart_log.PNG"
+                  height={40}
+                  src="/logo/logo-color.svg"
                   alt="logo"
                 />
               </a>
