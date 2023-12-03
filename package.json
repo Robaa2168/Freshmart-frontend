@@ -2,7 +2,7 @@
   "name": "Freshmart-store",
   "version": "0.1.0",
   "description": "this is Freshmart-store built with next.js and tailwindcss",
-  "homepage": "https://Freshmart-store.vercel.app/",
+  "homepage": "https://freshmart-plum.vercel.app/",
   "private": true,
   "scripts": {
     "dev": "next dev",

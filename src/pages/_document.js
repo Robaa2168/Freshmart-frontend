@@ -12,20 +12,16 @@ class MyDocument extends Document {
           <link rel="icon" href="/favicon.png" />
           <meta
             property="og:title"
-            content="Freshmart - React Grocery & Organic Food Store e-commerce Template"
+            content="Freshmart - Grocery & Organic Food Store "
           />
-          <meta property="og:type" content="eCommerce Website" />
+          <meta property="og:type" content="Grocery-Store" />
           <meta
             property="og:description"
-            content="React Grocery & Organic Food Store e-commerce Template"
+            content="Grocery & Organic Food Store"
           />
           <meta
             property="og:url"
-            content="https://Freshmart-store.vercel.app/"
-          />
-          <meta
-            property="og:image"
-            content="https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png"
+            content="https://freshmart-plum.vercel.app/"
           />
         </Head>
         <body>
