@@ -193,7 +193,6 @@ const AboutUs = () => {
                   width={420}
                   height={420}
                   src={
-                    storeCustomizationSetting?.about_us?.founder_one_img ||
                     "/team/team-1.jpg"
                   }
                   alt="team-1"
