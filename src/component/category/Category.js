@@ -30,7 +30,7 @@ const Category = () => {
                 <Image
                   width={100}
                   height={40}
-                  src="/logo/logo-color.svg"
+                  src="/logo/logo-color1.PNG"
                   alt="logo"
                 />
               </a>

@@ -18,7 +18,7 @@ const Coupon = ({ couponInHome }) => {
   const { globalSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
 
-  const currency = globalSetting?.default_currency || "$";
+  const currency = globalSetting?.default_currency || "KES";
 
   // console.log("coupon  data", data);
 
@@ -196,7 +196,7 @@ const Coupon = ({ couponInHome }) => {
                 <h2 className="pl-1 text-base font-medium text-gray-600">
                   <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                     {coupon?.discountType?.type === "fixed" ? (
-                      <span>${coupon?.discountType?.value}</span>
+                      <span>KES{coupon?.discountType?.value}</span>
                     ) : (
                       <span>{coupon?.discountType?.value}%</span>
                     )}

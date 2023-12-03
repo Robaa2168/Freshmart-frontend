@@ -74,7 +74,7 @@ const storeCustomization = {
       popular_products_status: true,
       discount_product_status: true,
       feature_promo_status: true,
-      discount_coupon_code: ["WINTER21", "OCTOBER21"],
+      discount_coupon_code: ["BFRIDAY", "JANUARY"],
       place_holder_img: "",
 
       discount_title: {
@@ -197,11 +197,11 @@ const storeCustomization = {
         de: "Über uns",
       },
       top_title: {
-        en: "Welcome to our Freshmart shop",
+        en: "Welcome to Freshmart, Your Gateway to Freshness!",
         de: "Willkommen in unserem Freshmart-Shop",
       },
       top_description: {
-        en: "Holisticly seize parallel metrics and functional ROI.Seamlessly revolutionize error-free internal or organic sources before effective scenarios. Progressively incentivize state of the art applications for efficient intellectual capital. Credibly leverage existing distinctive mindshare through cutting-edge schemas. Proactively procrastinate team building paradigms coordinate client-centric total transparent internal.\n\nDynamically embrace diverse customer service and installed base paradigms. Credibly seize enterprise-wide experiences for end-to-end data. Professionally brand flexible alignments and cost effective architectures. Enthusiastically incentivize seamless communities with seamlessly facilitate revolutionary metrics with strategic theme areas.",
+        en: "Beyond quality, we believe in convenience. We understand that in the hustle and bustle of daily life, grocery shopping can be a time-consuming task. That's where we step in. Our user-friendly online platform and speedy delivery service make shopping a breeze, saving you time and energy for the things that matter most.",
         de: "Erfassen Sie parallele Metriken und funktionalen ROI ganzheitlich. Revolutionieren Sie nahtlos fehlerfreie interne oder organische Quellen vor effektiven Szenarien. Fördern Sie nach und nach hochmoderne Anwendungen für effizientes intellektuelles Kapital. Nutzen Sie glaubwürdig vorhandenes unverwechselbares Mindshare durch hochmoderne Schemata. Teambuilding-Paradigmen proaktiv aufschieben koordinieren kundenzentriert total transparent intern. Umfassen Sie dynamisch unterschiedliche Kundendienst- und Installed-Base-Paradigmen. Nutzen Sie glaubwürdig unternehmensweite Erfahrungen für End-to-End-Daten. Professionelles Branding flexibler Ausrichtungen und kostengünstiger Architekturen. Schaffen Sie enthusiastische Anreize für nahtlose Gemeinschaften, indem Sie revolutionäre Metriken mit strategischen Themenbereichen nahtlos erleichtern.",
       },
       card_one_title: {
@@ -213,7 +213,7 @@ const storeCustomization = {
         de: "Gelistete Produkte",
       },
       card_one_description: {
-        en: "Dynamically morph team driven partnerships after vertical",
+        en: "Dynamically team driven partnerships",
         de: "Verwandeln Sie teamorientierte Partnerschaften dynamisch nach der Vertikalen",
       },
       card_two_title: {
@@ -225,11 +225,11 @@ const storeCustomization = {
         de: "Lieber Kunde",
       },
       card_two_description: {
-        en: "Competently productize virtual models without performance.",
+        en: "we continue to grow and evolve",
         de: "Virtuelle Modelle ohne Performance kompetent produzieren.",
       },
       middle_description_one: {
-        en: "Holisticly seize parallel metrics and functional ROI. Seamlessly revolutionize error-free internal or organic sources before effective scenarios. Progressively incentivize state of the art applications for efficient intellectual capital. Credibly leverage existing distinctive mindshare through cutting-edge schemas. Proactively procrastinate team building paradigms coordinate client-centric total transparent internal. Energistically reconceptualize global leadership for high-quality networks. Credibly restore an expanded array of systems rather than accurate results. Collaboratively synergize backend bandwidth without 24/7 functionalities. Credibly utilize proactive ideas whereas cross-media core competencies. Uniquely maximize professional best practices through resource maximizing services. Conveniently architect cross-unit web services for e-business imperatives.",
+        en: "Beyond quality, we believe in convenience. We understand that in the hustle and bustle of daily life, grocery shopping can be a time-consuming task. That's where we step in. Our user-friendly online platform and speedy delivery service make shopping a breeze, saving you time and energy for the things that matter most.",
         de: "Erfassen Sie parallele Metriken und funktionalen ROI ganzheitlich. Revolutionieren Sie nahtlos fehlerfreie interne oder organische Quellen vor effektiven Szenarien. Fördern Sie nach und nach hochmoderne Anwendungen für effizientes intellektuelles Kapital. Nutzen Sie glaubwürdig vorhandenes unverwechselbares Mindshare durch hochmoderne Schemata. Teambuilding-Paradigmen proaktiv aufschieben koordinieren kundenzentriert total transparent intern. Globale Führung für qualitativ hochwertige Netzwerke energisch neu konzipieren. Stellen Sie statt genauer Ergebnisse eine größere Anzahl von Systemen glaubwürdig wieder her. Synergisieren Sie gemeinsam Backend-Bandbreite ohne 24/7-Funktionalitäten. Proaktive Ideen glaubhaft nutzen und crossmediale Kernkompetenzen nutzen. Maximieren Sie auf einzigartige Weise professionelle Best Practices durch ressourcenoptimierende Services. Entwickeln Sie bequem bereichsübergreifende Webservices für E-Business-Anforderungen.",
       },
       middle_description_two: {
@@ -241,12 +241,11 @@ const storeCustomization = {
         de: "Unser Gründer",
       },
       founder_description: {
-        en: "We’re impartial and independent, and every day we create distinctive, world-class reintermediate backend supply programmes.",
+        en: "Welcome to the heart of Freshmart, where innovation meets tradition in the world of grocery supply. Our team is a unique blend of impassioned individuals, driven by a single goal: to revolutionize the way you experience groceries. With a commitment to impartiality and independence in the industry.",
         de: "Wir sind unparteiisch und unabhängig und erstellen jeden Tag unverwechselbare, erstklassige Reintermediate-Backend-Lieferprogramme.",
       },
       founder_one_name: {
-        en: "Niamh Shea",
-        de: "Niamh Shea ",
+        en: "Sharon Cherono",
       },
       founder_one_sub: {
         en: "Co-founder & Executive",
@@ -331,7 +330,7 @@ const storeCustomization = {
         en: "Mega Offer",
         de: "Mega Angebot",
       },
-      coupon_code: ["SUMMER21", "WINTER21", "AUGUST21", "OCTOBER21"],
+      coupon_code: ["DECEMBER ", "BFRIDAY", "NOVEMBER", "JANUARY"],
     },
     privacy_policy: {
       status: true,
