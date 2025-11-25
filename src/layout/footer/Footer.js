@@ -440,7 +440,7 @@ const Footer = () => {
                   </p>
                   <h5 className="text-2xl font-bold text-emerald-500 leading-7">
                     {/* +012345-67900 */}
-                    {storeCustomizationSetting?.footer?.bottom_contact}
+                    +254799322688
                   </h5>
                 </div>
               )}
