@@ -309,7 +309,7 @@ const Footer = () => {
                   width={110}
                   height={60}
                   src={
-                    "/logo/Freshmart_round.PNG"
+                    "/logo/Freshmart_round.png"
                   }
                   alt="logo"
                 />

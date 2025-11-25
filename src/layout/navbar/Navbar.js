@@ -36,7 +36,7 @@ const Navbar = () => {
 
   const logoSrc = useMemo(
     () =>
-      storeCustomizationSetting?.navbar?.header_logo || "/logo/Freshmart_round.PNG",
+      storeCustomizationSetting?.navbar?.header_logo || "/logo/Freshmart_round.png",
     [storeCustomizationSetting]
   );
 
