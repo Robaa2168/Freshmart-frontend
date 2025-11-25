@@ -19,7 +19,7 @@ const FooterTop = () => {
           <div className="flex-grow hidden lg:flex md:flex md:justify-items-center lg:justify-start">
             <Image
               src={
-                "/inside_grocery.PNG"
+                "/inside_grocery.png"
               }
               alt="app download"
               width={500}
