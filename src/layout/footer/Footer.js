@@ -467,20 +467,18 @@ const Footer = () => {
         </div>
       </div>
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">
-        <p className="text-sm text-gray-500 leading-6">
-          Copyright 2023 @{" "}
-          <Link
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-emerald-500">
-            
-              Freshmart
-            
-          </Link>
-          , All rights reserved.
-        </p>
-      </div>
+  <p className="text-sm text-gray-500 leading-6">
+    © {new Date().getFullYear()}{" "}
+    <Link
+      href="/"
+      className="text-emerald-600 hover:text-emerald-700 font-medium"
+    >
+      Freshmart
+    </Link>
+    . All rights reserved.
+  </p>
+</div>
+
     </div>
   );
 };
