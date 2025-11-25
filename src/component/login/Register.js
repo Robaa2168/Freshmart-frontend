@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/login/Register.js
 import { FiLock, FiMail, FiUser } from "react-icons/fi";
 
 //internal import
@@ -10,18 +11,21 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
     useLoginSubmit(setModalOpen);
 
   return (
-    <>
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold font-serif">Signing Up</h2>
-        <p className="text-sm md:text-base text-gray-500 mt-2 mb-8 sm:mb-10">
+    <div className="w-full">
+      <div className="text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold font-serif text-gray-900">
+          Signing Up
+        </h2>
+        <p className="text-sm sm:text-base text-gray-500 mt-2">
           Create an account with email
         </p>
       </div>
+
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="flex flex-col justify-center"
+        className="mt-6 sm:mt-8 flex flex-col"
       >
-        <div className="grid grid-cols-1 gap-5">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5">
           <div className="form-group">
             <InputArea
               register={register}
@@ -31,7 +35,6 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               placeholder="Full Name"
               Icon={FiUser}
             />
-
             <Error errorName={errors.name} />
           </div>
 
@@ -46,6 +49,7 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
             />
             <Error errorName={errors.email} />
           </div>
+
           <div className="form-group">
             <InputArea
               register={register}
@@ -55,47 +59,51 @@ const Register = ({ setShowResetPassword, setModalOpen }) => {
               placeholder="Password"
               Icon={FiLock}
             />
-
             <Error errorName={errors.password} />
           </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex ms-auto">
-              <button
-                type="button"
-                onClick={() => setShowResetPassword(true)}
-                className="text-end text-sm text-heading ps-3 underline hover:no-underline focus:outline-none"
-              >
-                Forgot password?
-              </button>
-            </div>
+          <div className="flex items-center justify-end">
+            <button
+              type="button"
+              onClick={() => setShowResetPassword(true)}
+              className="text-sm font-medium text-emerald-700 hover:text-emerald-800 underline underline-offset-4 hover:no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded"
+            >
+              Forgot password?
+            </button>
           </div>
-          {loading ? (
-            <button
-              disabled={loading}
-              type="submit"
-              className="md:text-sm leading-5 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-emerald-500 text-white px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-emerald-600 h-12 mt-1 text-sm lg:text-sm w-full sm:w-auto"
-            >
-              <img
-                src="/loader/spinner.gif"
-                alt="Loading"
-                width={20}
-                height={10}
-              />
-              <span className="font-serif ml-2 font-light">Processing</span>
-            </button>
-          ) : (
-            <button
-              disabled={loading}
-              type="submit"
-              className="w-full text-center py-3 rounded bg-emerald-500 text-white hover:bg-emerald-600 transition-all focus:outline-none my-1"
-            >
-              Register
-            </button>
-          )}
+
+          <div className="pt-1">
+            {loading ? (
+              <button
+                disabled
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 text-white py-3 text-sm font-semibold shadow-sm opacity-90 cursor-not-allowed"
+              >
+                <img
+                  src="/loader/spinner.gif"
+                  alt="Loading"
+                  width={18}
+                  height={18}
+                />
+                <span className="font-serif font-light">Processing</span>
+              </button>
+            ) : (
+              <button
+                disabled={loading}
+                type="submit"
+                className="w-full text-center py-3 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 shadow-sm font-semibold"
+              >
+                Register
+              </button>
+            )}
+          </div>
+
+          <p className="text-xs sm:text-sm text-gray-500 text-center pt-2">
+            By continuing, you agree to Freshmart’s terms and privacy policy.
+          </p>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
