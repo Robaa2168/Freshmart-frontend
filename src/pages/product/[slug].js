@@ -251,7 +251,7 @@ const ProductScreen = ({ product, attributes, relatedProduct }) => {
                 <ol className="flex items-center w-full overflow-hidden font-serif">
                   <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
                     <Link href="/">
-                      <a>Home</a>
+                      Home
                     </Link>
                   </li>
                   <li className="text-sm mt-[1px]">

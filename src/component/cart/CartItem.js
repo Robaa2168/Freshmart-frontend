@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/cart/CartItem.js
 import { useContext } from "react";
 import Link from "next/link";
 import { useCart } from "react-use-cart";
@@ -26,13 +27,13 @@ const CartItem = ({ item, currency }) => {
         />
       </div>
       <div className="flex flex-col w-full overflow-hidden">
-        <Link href={`/product/${item.slug}`}>
-          <a
-            onClick={closeCartDrawer}
-            className="truncate text-sm font-medium text-gray-700 text-heading line-clamp-1"
-          >
-            {item.title}
-          </a>
+        <Link
+          href={`/product/${item.slug}`}
+          onClick={closeCartDrawer}
+          className="truncate text-sm font-medium text-gray-700 text-heading line-clamp-1">
+
+          {item.title}
+
         </Link>
         <span className="text-xs text-gray-400 mb-1">
           Item Price ${item.price}

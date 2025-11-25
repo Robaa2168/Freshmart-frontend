@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+//freshmart-frontend/src/layout/navbar/Navbar.js
+import { useContext, useEffect, useMemo, useState } from "react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,141 +23,157 @@ const Navbar = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [searchText, setSearchText] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+
   const { toggleCartDrawer } = useContext(SidebarContext);
   const { totalItems } = useCart();
   const router = useRouter();
 
   const { storeCustomizationSetting } = useGetSetting();
-  // console.log("storeCustomizationSetting", storeCustomizationSetting);
 
   const {
     state: { userInfo },
   } = useContext(UserContext);
 
+  const logoSrc = useMemo(
+    () =>
+      storeCustomizationSetting?.navbar?.header_logo || "/logo/Freshmart_round.PNG",
+    [storeCustomizationSetting]
+  );
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const q = searchText.trim();
 
-    // return;
-    if (searchText) {
-      router.push(`/search?query=${searchText}`, null, { scroll: false });
+    if (q) {
+      router.push(`/search?query=${encodeURIComponent(q)}`, null, { scroll: false });
       setSearchText("");
-    } else {
-      router.push(`/ `, null, { scroll: false });
-      setSearchText("");
+      return;
     }
+
+    router.push(`/`, null, { scroll: false });
+    setSearchText("");
   };
 
   useEffect(() => {
     if (Cookies.get("userInfo")) {
       const user = JSON.parse(Cookies.get("userInfo"));
-      setImageUrl(user.image);
+      setImageUrl(user?.image || "");
     }
   }, []);
+
+  const ProfileButton = () => {
+    if (imageUrl || userInfo?.image) {
+      return (
+        <Link
+          href="/user/dashboard"
+          aria-label="Open your dashboard"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/70 bg-white/10 p-0.5 shadow-sm cursor-pointer transition hover:border-white hover:bg-white/20 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
+        >
+          <Image
+            width={32}
+            height={32}
+            src={imageUrl || userInfo?.image}
+            alt="user"
+            className="rounded-full"
+          />
+        </Link>
+      );
+    }
+
+    if (userInfo?.name) {
+      return (
+        <Link
+          href="/user/dashboard"
+          aria-label="Open your dashboard"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/70 bg-white/10 text-white text-sm font-bold cursor-pointer transition hover:border-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
+        >
+          {userInfo?.name?.[0]?.toUpperCase()}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        aria-label="Open login"
+        onClick={() => setModalOpen(true)}
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/40 bg-white/10 text-white shadow-sm transition hover:border-white/70 hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
+      >
+        <FiUser className="h-5 w-5 drop-shadow" />
+      </button>
+    );
+  };
 
   return (
     <>
       <CartDrawer />
-      {modalOpen && (
-        <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
-      )}
+      {modalOpen && <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
 
-      <div className="bg-emerald-500 sticky top-0 z-20">
-        <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-          <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
-            <Link href="/">
-              <a className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block">
-                <Image
-                  width={110}
-                  height={40}
-                  src={
-                    storeCustomizationSetting?.navbar?.header_logo ||
-                    "/logo/Freshmart_round.PNG"
-                  }
-                  alt="logo"
-                />
-              </a>
+      <header className="sticky top-0 z-20 bg-emerald-600">
+        <div className="max-w-screen-2xl mx-auto px-3 sm:px-6 lg:px-10">
+          <div className="h-16 flex items-center gap-3">
+            <Link href="/" className="hidden lg:inline-flex items-center shrink-0">
+              <Image
+                width={120}
+                height={40}
+                src={logoSrc}
+                alt="logo"
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
-            <div className="w-full transition-all duration-200 ease-in-out lg:flex lg:max-w-[520px] xl:max-w-[750px] 2xl:max-w-[900px] md:mx-12 lg:mx-4 xl:mx-0">
-              <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
-                <div className="flex flex-col mx-auto w-full">
-                  <form
-                    onSubmit={handleSubmit}
-                    className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
-                  >
-                    <label className="flex items-center py-0.5">
-                      <input
-                        onChange={(e) => setSearchText(e.target.value)}
-                        value={searchText}
-                        className="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
-                        placeholder={t(`common:search-placeholder`)}
-                      />
-                    </label>
-                    <button
-                      aria-label="Search"
-                      type="submit"
-                      className="outline-none text-xl text-gray-400 absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"
-                    >
-                      <IoSearchOutline />
-                    </button>
-                  </form>
-                </div>
-              </div>
+
+            <div className="flex-1">
+              <form
+                onSubmit={handleSubmit}
+                className="relative w-full max-w-3xl mx-auto"
+              >
+                <input
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                  className="w-full h-11 rounded-lg bg-white/95 pl-4 pr-12 text-sm text-gray-900 shadow-sm ring-1 ring-black/5 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white/70"
+                  placeholder={t(`common:search-placeholder`)}
+                />
+                <button
+                  aria-label="Search"
+                  type="submit"
+                  className="absolute right-1 top-1 inline-flex h-9 w-9 items-center justify-center rounded-md text-gray-500 transition hover:bg-emerald-50 hover:text-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200"
+                >
+                  <IoSearchOutline className="text-xl" />
+                </button>
+              </form>
             </div>
-            <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               <button
-                className="pr-5 text-white text-2xl font-bold"
-                aria-label="Alert"
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/25 bg-white/10 text-white transition hover:bg-white/20 hover:border-white/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
+                aria-label="Notifications"
               >
-                <FiBell className="w-6 h-6 drop-shadow-xl" />
+                <FiBell className="h-5 w-5 drop-shadow" />
               </button>
+
               <button
-                aria-label="Total"
+                type="button"
                 onClick={toggleCartDrawer}
-                className="relative px-5 text-white text-2xl font-bold"
+                aria-label="Open cart"
+                className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/25 bg-white/10 text-white transition hover:bg-white/20 hover:border-white/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
               >
-                <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
+                <FiShoppingCart className="h-5 w-5 drop-shadow" />
+                <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 text-[11px] font-bold leading-5 text-white bg-red-500 rounded-full shadow">
                   {totalItems}
                 </span>
-                <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
               </button>
-              {/* Profile dropdown */}
 
-              <button
-                className="pl-5 text-white text-2xl font-bold"
-                aria-label="Login"
-              >
-                {imageUrl || userInfo?.image ? (
-                  <Link href="/user/dashboard">
-                    <a className="relative top-1 w-6 h-6">
-                      <Image
-                        width={29}
-                        height={29}
-                        src={imageUrl || userInfo?.image}
-                        alt="user"
-                        className="bg-white rounded-full"
-                      />
-                    </a>
-                  </Link>
-                ) : userInfo?.name ? (
-                  <Link href="/user/dashboard">
-                    <a className="leading-none font-bold font-serif block">
-                      {userInfo?.name[0]}
-                    </a>
-                  </Link>
-                ) : (
-                  <span onClick={() => setModalOpen(!modalOpen)}>
-                    <FiUser className="w-6 h-6 drop-shadow-xl" />
-                  </span>
-                )}
-              </button>
+              <ProfileButton />
             </div>
           </div>
         </div>
 
-        {/* second header */}
         <NavbarPromo />
-      </div>
+      </header>
     </>
   );
 };
+
 export default dynamic(() => Promise.resolve(Navbar), { ssr: false });

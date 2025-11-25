@@ -245,7 +245,7 @@ const storeCustomization = {
         de: "Wir sind unparteiisch und unabhängig und erstellen jeden Tag unverwechselbare, erstklassige Reintermediate-Backend-Lieferprogramme.",
       },
       founder_one_name: {
-        en: "Sharon Cherono",
+        en: "Kathy Chelangat",
       },
       founder_one_sub: {
         en: "Co-founder & Executive",
@@ -288,8 +288,8 @@ const storeCustomization = {
         de: "Rufen Sie uns an",
       },
       call_box_phone: {
-        en: "+254727372017",
-        de: "+254727372017",
+        en: "+254799322688",
+        de: "+254799322688",
       },
       call_box_text: {
         en: "Distinctively disseminate focused solutions clicks-and-mortar ministate. ",
@@ -763,7 +763,7 @@ const storeCustomization = {
         en: "Stall No. 14, Ground Floor, City Market, Muindi Mbingu Street, Nairobi",
         de: "Stall No. 14, Ground Floor, City Market, Muindi Mbingu Street, Nairobi",
       },
-      block4_phone: "+254727372017",
+      block4_phone: "+254799322688",
       block4_email: "info@freshmart.com",
 
       social_facebook: "https://www.facebook.com/",
@@ -775,7 +775,7 @@ const storeCustomization = {
       payment_method_img:
         "https://res.cloudinary.com/ahossain/image/upload/v1697688607/settings/payment-logo_qhslgz.webp",
 
-      bottom_contact: "+254727372017",
+      bottom_contact: "+254799322688",
     },
 
     slug: {

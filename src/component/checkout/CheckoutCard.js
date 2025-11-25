@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/checkout/CheckoutCard.js
 import Image from "next/image";
 import { useCart } from "react-use-cart";
 import { FiPlus, FiMinus } from "react-icons/fi";

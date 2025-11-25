@@ -14,8 +14,8 @@ const ResetPassword = ({ setShowResetPassword, setModalOpen }) => {
   return (
     <>
       <div className="text-center mb-6">
-        <Link href="/">
-          <a className="text-3xl font-bold font-serif">Forget Password</a>
+        <Link href="/" className="text-3xl font-bold font-serif">
+          Forget Password
         </Link>
         <p className="text-sm md:text-base text-gray-500 mt-2 mb-8 sm:mb-10">
           Reset Your Password

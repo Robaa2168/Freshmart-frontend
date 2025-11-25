@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/form/Error.js
 import React from "react";
 
 const Error = ({ errorName }) => {

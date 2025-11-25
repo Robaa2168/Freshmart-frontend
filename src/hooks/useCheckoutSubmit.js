@@ -1,13 +1,14 @@
+// freshmart-frontend/src/hooks/useCheckoutSubmit.js
 import Cookies from "js-cookie";
 import dayjs from "dayjs";
-import requests from '../services/httpServices';
+import requests from "../services/httpServices";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "react-use-cart";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
-//internal import
+// internal import
 import useAsync from "@hooks/useAsync";
 import { UserContext } from "@context/UserContext";
 import OrderServices from "@services/OrderServices";
@@ -52,100 +53,100 @@ const useCheckoutSubmit = (mpesaPhone) => {
   useEffect(() => {
     if (Cookies.get("couponInfo")) {
       const coupon = JSON.parse(Cookies.get("couponInfo"));
-      // console.log('coupon information',coupon)
       setCouponInfo(coupon);
       setDiscountPercentage(coupon.discountType);
       setMinimumAmount(coupon.minimumAmount);
     }
   }, [isCouponApplied]);
 
-  //remove coupon if total value less then minimum amount of coupon
   useEffect(() => {
     if (minimumAmount - discountAmount > total || isEmpty) {
       setDiscountPercentage(0);
       Cookies.remove("couponInfo");
     }
-  }, [minimumAmount, total]);
+  }, [minimumAmount, total, discountAmount, isEmpty]);
 
-  //calculate total and discount value
-  //calculate total and discount value
   useEffect(() => {
     const discountProductTotal = items?.reduce(
-      (preValue, currentValue) => preValue + currentValue.itemTotal,
+      (preValue, currentValue) => preValue + (currentValue?.itemTotal || 0),
       0
     );
 
-    let totalValue = "";
-    let subTotal = parseFloat(cartTotal + Number(shippingCost)).toFixed(2);
-    const discountAmount =
+    const subTotal = parseFloat(cartTotal + Number(shippingCost)).toFixed(2);
+
+    const computedDiscount =
       discountPercentage?.type === "fixed"
         ? discountPercentage?.value
         : discountProductTotal * (discountPercentage?.value / 100);
 
-    const discountAmountTotal = discountAmount ? discountAmount : 0;
-
-    totalValue = Number(subTotal) - discountAmountTotal;
+    const discountAmountTotal = computedDiscount ? computedDiscount : 0;
+    const totalValue = Number(subTotal) - discountAmountTotal;
 
     setDiscountAmount(discountAmountTotal);
-
     setTotal(totalValue);
-  }, [cartTotal, shippingCost, discountPercentage]);
+  }, [cartTotal, shippingCost, discountPercentage, items]);
 
-  //if not login then push user to home page
   useEffect(() => {
-    if (!userInfo) {
-      router.push("/");
-    }
+    if (!userInfo) router.push("/");
 
-    setValue("firstName", shippingAddress.firstName);
-    setValue("lastName", shippingAddress.lastName);
-    setValue("address", shippingAddress.address);
-    setValue("contact", shippingAddress.contact);
-    setValue("email", shippingAddress.email);
-    setValue("city", shippingAddress.city);
-    setValue("country", shippingAddress.country);
-    setValue("zipCode", shippingAddress.zipCode);
+    setValue("firstName", shippingAddress?.firstName || "");
+    setValue("lastName", shippingAddress?.lastName || "");
+    setValue("address", shippingAddress?.address || "");
+    setValue("contact", shippingAddress?.contact || "");
+    setValue("email", shippingAddress?.email || "");
+    setValue("city", shippingAddress?.city || "");
+    setValue("country", shippingAddress?.country || "");
+    setValue("zipCode", shippingAddress?.zipCode || "");
   }, []);
 
+  const generateUniqueIdentifier = () => {
+    const min = 10000000;
+    const max = 99999999;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
-  const initiateMpesaPayment = async (orderInfo, mpesaPhone) => {
-    console.log(orderInfo);
+  const initiateMpesaPayment = async (orderInfo, phone) => {
     try {
-      const response = await requests.post('/order/mpesa-pay', {
-        phone: mpesaPhone,
+      const response = await requests.post("/order/mpesa-pay", {
+        phone,
         amount: orderInfo.total,
         paymentIdentifier: orderInfo.paymentIdentifier,
         initiatorPhoneNumber: orderInfo.user_info.contact,
       });
-  
-      if (response.success) {
-        // If the response is successful, display the success message
-        notifySuccess(`M-Pesa payment initiated successfully: ${response.data.ResponseDescription}`);
+
+      if (response?.success) {
+        notifySuccess(
+          `M-Pesa payment initiated successfully: ${response?.data?.ResponseDescription}`
+        );
+
         OrderServices.addOrder(orderInfo)
-        .then((res) => {
-          router.push(`/order/${res._id}`);
-          notifySuccess("Your order has been placed. We will send a confirmation email once the payment is processed.");
-          Cookies.remove("couponInfo");
-          sessionStorage.removeItem("products");
-          emptyCart();
-          setIsCheckoutSubmit(false);
-        })
-        .catch((err) => {
-          notifyError(err.message);
-          setIsCheckoutSubmit(false);
-        });
+          .then((res) => {
+            router.push(`/order/${res._id}`);
+            notifySuccess(
+              "Your order has been placed. We will send a confirmation email once the payment is processed."
+            );
+            Cookies.remove("couponInfo");
+            sessionStorage.removeItem("products");
+            emptyCart();
+            setIsCheckoutSubmit(false);
+          })
+          .catch((err) => {
+            notifyError(err?.message || "Failed to place order");
+            setIsCheckoutSubmit(false);
+          });
       } else {
-        // If the response is not successful, display an error message
-        notifyError(`Failed to initiate M-Pesa payment: ${response.data.ResponseDescription || 'Unknown error'}`);
+        notifyError(
+          `Failed to initiate M-Pesa payment: ${
+            response?.data?.ResponseDescription || "Unknown error"
+          }`
+        );
+        setIsCheckoutSubmit(false);
       }
-    } catch (error) {
-      // Catch and log
-      console.error("Error initiating M-Pesa payment:", error);
-      notifyError("Error initiating M-Pesa payment: " + error.message);
+    } catch (err) {
+      notifyError("Error initiating M-Pesa payment: " + (err?.message || ""));
+      setIsCheckoutSubmit(false);
     }
   };
-
-  
 
   const submitHandler = async (data) => {
     dispatch({ type: "SAVE_SHIPPING_ADDRESS", payload: data });
@@ -153,7 +154,7 @@ const useCheckoutSubmit = (mpesaPhone) => {
     setIsCheckoutSubmit(true);
     setError("");
 
-    userInfo = {
+    const userInfoPayload = {
       name: `${data.firstName} ${data.lastName}`,
       contact: data.contact,
       email: data.email,
@@ -163,59 +164,46 @@ const useCheckoutSubmit = (mpesaPhone) => {
       zipCode: data.zipCode,
     };
 
-    let orderInfo = {
-      user_info: userInfo,
+    const orderInfo = {
+      user_info: userInfoPayload,
       shippingOption: data.shippingOption,
       paymentMethod: data.paymentMethod,
       status: "Pending",
       cart: items,
       subTotal: cartTotal,
-      shippingCost: shippingCost,
+      shippingCost,
       discount: discountAmount,
-      total: total,
-      // Add a unique 8-digit payment identifier
+      total,
       paymentIdentifier: generateUniqueIdentifier(),
     };
-    
-    function generateUniqueIdentifier() {
-      // Generate a random 8-digit number
-      const min = 10000000;
-      const max = 99999999;
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    
 
     if (data.paymentMethod === "Card") {
       if (!stripe || !elements) {
-        return;
-      }
-
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
-        type: "card",
-        card: elements.getElement(CardElement),
-      });
-
-      // console.log('error', error);
-
-      if (error && !paymentMethod) {
-        setError(error.message);
         setIsCheckoutSubmit(false);
-      } else {
-        setError("");
-        const orderData = {
-          ...orderInfo,
-          cardInfo: paymentMethod,
-        };
-
-        handlePaymentWithStripe(orderData);
-
-        // console.log('cardInfo', orderData);
         return;
       }
+
+      const { error: stripeError, paymentMethod } =
+        await stripe.createPaymentMethod({
+          type: "card",
+          card: elements.getElement(CardElement),
+        });
+
+      if (stripeError && !paymentMethod) {
+        setError(stripeError.message);
+        setIsCheckoutSubmit(false);
+        return;
+      }
+
+      setError("");
+      const orderData = { ...orderInfo, cardInfo: paymentMethod };
+      handlePaymentWithStripe(orderData);
+      return;
     }
+
     if (data.paymentMethod === "Mpesa") {
-      // Call handleMpesaPayment with orderInfo and mpesaPhone
       await initiateMpesaPayment(orderInfo, mpesaPhone);
+      return;
     }
 
     if (data.paymentMethod === "Cash") {
@@ -229,7 +217,7 @@ const useCheckoutSubmit = (mpesaPhone) => {
           setIsCheckoutSubmit(false);
         })
         .catch((err) => {
-          notifyError(err.message);
+          notifyError(err?.message || "Failed to place order");
           setIsCheckoutSubmit(false);
         });
     }
@@ -237,26 +225,16 @@ const useCheckoutSubmit = (mpesaPhone) => {
 
   const handlePaymentWithStripe = async (order) => {
     try {
-      // console.log('try goes here!', order);
-      // const updatedOrder = {
-      //   ...order,
-      //   currency: 'KES',
-      // };
       OrderServices.createPaymentIntent(order)
         .then((res) => {
           stripe.confirmCardPayment(res.client_secret, {
-            payment_method: {
-              card: elements.getElement(CardElement),
-            },
+            payment_method: { card: elements.getElement(CardElement) },
           });
 
-          const orderData = {
-            ...order,
-            cardInfo: res,
-          };
+          const orderData = { ...order, cardInfo: res };
           OrderServices.addOrder(orderData)
-            .then((res) => {
-              router.push(`/order/${res._id}`);
+            .then((r) => {
+              router.push(`/order/${r._id}`);
               notifySuccess("Your Order Confirmed!");
               Cookies.remove("couponInfo");
               emptyCart();
@@ -264,20 +242,16 @@ const useCheckoutSubmit = (mpesaPhone) => {
               setIsCheckoutSubmit(false);
             })
             .catch((err) => {
-              notifyError(err ? err?.response?.data?.message : err.message);
+              notifyError(err ? err?.response?.data?.message : err?.message);
               setIsCheckoutSubmit(false);
             });
-          // console.log('res', res, 'paymentIntent', paymentIntent);
         })
-
         .catch((err) => {
-          console.log("err on creating payment intent", err.message);
-          notifyError(err ? err?.response?.data?.message : err.message);
+          notifyError(err ? err?.response?.data?.message : err?.message);
           setIsCheckoutSubmit(false);
         });
     } catch (err) {
-      console.log("err", err?.message);
-      notifyError(err ? err?.response?.data?.message : err.message);
+      notifyError(err ? err?.response?.data?.message : err?.message);
       setIsCheckoutSubmit(false);
     }
   };
@@ -293,7 +267,8 @@ const useCheckoutSubmit = (mpesaPhone) => {
       notifyError("Please Input a Coupon Code!");
       return;
     }
-    const result = data.filter(
+
+    const result = (data || []).filter(
       (coupon) => coupon.couponCode === couponRef.current.value
     );
 
@@ -312,16 +287,16 @@ const useCheckoutSubmit = (mpesaPhone) => {
         `Minimum ${result[0].minimumAmount} USD required for Apply this coupon!`
       );
       return;
-    } else {
-      notifySuccess(
-        `Your Coupon ${result[0].couponCode} is Applied on ${result[0].productType}!`
-      );
-      setIsCouponApplied(true);
-      setMinimumAmount(result[0]?.minimumAmount);
-      setDiscountPercentage(result[0].discountType);
-      dispatch({ type: "SAVE_COUPON", payload: result[0] });
-      Cookies.set("couponInfo", JSON.stringify(result[0]));
     }
+
+    notifySuccess(
+      `Your Coupon ${result[0].couponCode} is Applied on ${result[0].productType}!`
+    );
+    setIsCouponApplied(true);
+    setMinimumAmount(result[0]?.minimumAmount);
+    setDiscountPercentage(result[0].discountType);
+    dispatch({ type: "SAVE_COUPON", payload: result[0] });
+    Cookies.set("couponInfo", JSON.stringify(result[0]));
   };
 
   return {

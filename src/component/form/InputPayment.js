@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/form/InputPayment.js
 import React from 'react';
 
 const InputPayment = ({ register, Icon, name, value, setShowCard }) => {

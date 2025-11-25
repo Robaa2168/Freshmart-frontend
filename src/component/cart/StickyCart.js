@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/cart/StickyCart.js
 import dynamic from "next/dynamic";
 import React, { useContext, useState } from "react";
 import { IoBagHandleOutline } from "react-icons/io5";

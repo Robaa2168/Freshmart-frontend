@@ -49,37 +49,40 @@ const FooterTop = () => {
             <div className="mt-8">
               <Link
                 href={`${storeCustomizationSetting?.home?.daily_need_app_link}`}
-              >
-                <a className="mx-2" target="_blank" rel="noreferrer">
-                  <Image
-                    width={170}
-                    height={50}
-                    className="mr-2 rounded"
-                    src={
-                      storeCustomizationSetting?.home?.button1_img ||
-                      "/app/app-store.svg"
-                    }
-                    alt="app store"
-                  />
-                </a>
+                className="mx-2"
+                target="_blank"
+                rel="noreferrer">
+
+                <Image
+                  width={170}
+                  height={50}
+                  className="mr-2 rounded"
+                  src={
+                    storeCustomizationSetting?.home?.button1_img ||
+                    "/app/app-store.svg"
+                  }
+                  alt="app store"
+                />
+
               </Link>
               <Link
                 href={`${storeCustomizationSetting?.home?.daily_need_google_link}`}
-              >
-                <a target="_blank" rel="noreferrer">
-                  {
-                    <Image
-                      width={170}
-                      height={50}
-                      src={
-                        storeCustomizationSetting?.home?.button2_img ||
-                        "/app/play-store.svg"
-                      }
-                      alt=""
-                      className="block w-auto object-contain"
-                    />
-                  }
-                </a>
+                target="_blank"
+                rel="noreferrer">
+
+                {
+                  <Image
+                    width={170}
+                    height={50}
+                    src={
+                      storeCustomizationSetting?.home?.button2_img ||
+                      "/app/play-store.svg"
+                    }
+                    alt=""
+                    className="block w-auto object-contain"
+                  />
+                }
+
               </Link>
             </div>
           </div>

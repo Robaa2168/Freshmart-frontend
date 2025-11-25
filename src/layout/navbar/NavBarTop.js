@@ -44,7 +44,6 @@ const NavBarTop = () => {
       {modalOpen && (
         <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
       )}
-
       <div className="hidden lg:block bg-gray-100">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
           <div className="text-gray-700 py-2 font-sans text-xs font-medium border-b flex justify-between items-center">
@@ -56,36 +55,36 @@ const NavBarTop = () => {
               <a
                 href={`tel:${
                   storeCustomizationSetting?.navbar?.phone_number ||
-                  "+254727372017"
+                  "+254799322688"
                 }`}
                 className="font-bold text-emerald-500 ml-1"
               >
                 {storeCustomizationSetting?.navbar?.phone_number ||
-                  "+254727372017"}
+                  "+254799322688"}
               </a>
             </span>
 
             <div className="lg:text-right flex items-center navBar">
               {storeCustomizationSetting?.navbar?.about_menu_status && (
                 <div>
-                  <Link href="/about-us">
-                    <a className="font-medium hover:text-emerald-600">
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.navbar?.about_us
-                      )}
-                    </a>
+                  <Link href="/about-us" className="font-medium hover:text-emerald-600">
+
+                    {showingTranslateValue(
+                      storeCustomizationSetting?.navbar?.about_us
+                    )}
+
                   </Link>
                   <span className="mx-2">|</span>
                 </div>
               )}
               {storeCustomizationSetting?.navbar?.contact_menu_status && (
                 <div>
-                  <Link href="/contact-us">
-                    <a className="font-medium hover:text-emerald-600">
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.navbar?.contact_us
-                      )}
-                    </a>
+                  <Link href="/contact-us" className="font-medium hover:text-emerald-600">
+
+                    {showingTranslateValue(
+                      storeCustomizationSetting?.navbar?.contact_us
+                    )}
+
                   </Link>
                   <span className="mx-2">|</span>
                 </div>

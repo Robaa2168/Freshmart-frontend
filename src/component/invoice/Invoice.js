@@ -41,15 +41,15 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
           </div>
           <div className="lg:text-right text-left">
             <h2 className="text-lg font-serif font-semibold mt-4 lg:mt-0 md:mt-0">
-              <Link href="/">
-                <a className="">
-                  <Image
-                    width={110}
-                    height={40}
-                    src="/logo/logo-color.svg"
-                    alt="logo"
-                  />
-                </a>
+              <Link href="/" className="">
+
+                <Image
+                  width={110}
+                  height={40}
+                  src="/logo/logo-color.svg"
+                  alt="logo"
+                />
+
               </Link>
             </h2>
             <p className="text-sm text-gray-500">
@@ -137,7 +137,6 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
           </div>
         </div>
       </div>
-
       <div className="border-t border-b border-gray-100 p-10 bg-emerald-50">
         <div className="flex lg:flex-row md:flex-row flex-col justify-between pt-4">
           <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">

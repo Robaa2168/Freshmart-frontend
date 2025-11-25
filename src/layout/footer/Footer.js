@@ -45,75 +45,74 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link1}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title1
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block1_sub_title1
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link2}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      {/* {t('common:footer-contact-us')} */}
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
 
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title2
-                        }
-                      />
-                    </a>
+                    {/* {t('common:footer-contact-us')} */}
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block1_sub_title2
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link3}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      {/* {t('common:footer-careers')} */}
-                      {showingTranslateValue(
-                        storeCustomizationSetting?.footer_block_one_link_three_title
-                      )}
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title3
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    {/* {t('common:footer-careers')} */}
+                    {showingTranslateValue(
+                      storeCustomizationSetting?.footer_block_one_link_three_title
+                    )}
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block1_sub_title3
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link4}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block1_sub_title4
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block1_sub_title4
+                      }
+                    />
+
                   </Link>
                 </li>
               </ul>
@@ -134,70 +133,70 @@ const Footer = () => {
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link1}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block2_sub_title1
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block2_sub_title1
+                      }
+                    />
+
                   </Link>
                 </li>
 
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link2}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block2_sub_title2
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block2_sub_title2
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link3}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block2_sub_title3
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block2_sub_title3
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
                   <Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link4}`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block2_sub_title4
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block2_sub_title4
+                      }
+                    />
+
                   </Link>
                 </li>
               </ul>
@@ -222,18 +221,18 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link1
                         : "#"
                     }`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title1
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block3_sub_title1
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
@@ -243,18 +242,18 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link2
                         : "#"
                     }`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title2
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block3_sub_title2
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
@@ -264,18 +263,18 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link3
                         : "#"
                     }`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title3
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block3_sub_title3
+                      }
+                    />
+
                   </Link>
                 </li>
                 <li className="flex items-baseline">
@@ -285,18 +284,18 @@ const Footer = () => {
                         ? storeCustomizationSetting?.footer?.block3_sub_link4
                         : "#"
                     }`}
-                  >
-                    <a className="text-gray-600 inline-block w-full hover:text-emerald-500">
-                      <CMSkeleton
-                        count={1}
-                        height={10}
-                        // error={error}
-                        loading={loading}
-                        data={
-                          storeCustomizationSetting?.footer?.block3_sub_title4
-                        }
-                      />
-                    </a>
+                    className="text-gray-600 inline-block w-full hover:text-emerald-500">
+
+                    <CMSkeleton
+                      count={1}
+                      height={10}
+                      // error={error}
+                      loading={loading}
+                      data={
+                        storeCustomizationSetting?.footer?.block3_sub_title4
+                      }
+                    />
+
                   </Link>
                 </li>
               </ul>
@@ -304,17 +303,17 @@ const Footer = () => {
           )}
           {storeCustomizationSetting?.footer?.block4_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-              <Link href="/">
-                <a className="mr-3 lg:mr-12 xl:mr-12" rel="noreferrer">
-                  <Image
-                    width={110}
-                    height={60}
-                    src={
-                      "/logo/Freshmart_round.PNG"
-                    }
-                    alt="logo"
-                  />
-                </a>
+              <Link href="/" className="mr-3 lg:mr-12 xl:mr-12" rel="noreferrer">
+
+                <Image
+                  width={110}
+                  height={60}
+                  src={
+                    "/logo/Freshmart_round.PNG"
+                  }
+                  alt="logo"
+                />
+
               </Link>
               <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
                 {showingTranslateValue(
@@ -363,15 +362,13 @@ const Footer = () => {
                       <li className="flex items-center mr-3 transition ease-in-out duration-500">
                         <Link
                           href={`${storeCustomizationSetting?.footer?.social_facebook}`}
-                        >
-                          <a
-                            aria-label="Social Link"
-                            rel="noreferrer"
-                            target="_blank"
-                            className="block text-center mx-auto text-gray-500 hover:text-white"
-                          >
-                            <FacebookIcon size={34} round />
-                          </a>
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto text-gray-500 hover:text-white">
+
+                          <FacebookIcon size={34} round />
+
                         </Link>
                       </li>
                     )}
@@ -379,15 +376,13 @@ const Footer = () => {
                       <li className="flex items-center  mr-3 transition ease-in-out duration-500">
                         <Link
                           href={`${storeCustomizationSetting?.footer?.social_twitter}`}
-                        >
-                          <a
-                            aria-label="Social Link"
-                            rel="noreferrer"
-                            target="_blank"
-                            className="block text-center mx-auto text-gray-500 hover:text-white"
-                          >
-                            <TwitterIcon size={34} round />
-                          </a>
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto text-gray-500 hover:text-white">
+
+                          <TwitterIcon size={34} round />
+
                         </Link>
                       </li>
                     )}
@@ -395,15 +390,13 @@ const Footer = () => {
                       <li className="flex items-center mr-3 transition ease-in-out duration-500">
                         <Link
                           href={`${storeCustomizationSetting?.footer?.social_pinterest}`}
-                        >
-                          <a
-                            aria-label="Social Link"
-                            rel="noreferrer"
-                            target="_blank"
-                            className="block text-center mx-auto text-gray-500 hover:text-white"
-                          >
-                            <PinterestIcon size={34} round />
-                          </a>
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto text-gray-500 hover:text-white">
+
+                          <PinterestIcon size={34} round />
+
                         </Link>
                       </li>
                     )}
@@ -411,15 +404,13 @@ const Footer = () => {
                       <li className="flex items-center  mr-3 transition ease-in-out duration-500">
                         <Link
                           href={`${storeCustomizationSetting?.footer?.social_linkedin}`}
-                        >
-                          <a
-                            aria-label="Social Link"
-                            rel="noreferrer"
-                            target="_blank"
-                            className="block text-center mx-auto text-gray-500 hover:text-white"
-                          >
-                            <LinkedinIcon size={34} round />
-                          </a>
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto text-gray-500 hover:text-white">
+
+                          <LinkedinIcon size={34} round />
+
                         </Link>
                       </li>
                     )}
@@ -427,15 +418,13 @@ const Footer = () => {
                       <li className="flex items-center  mr-3 transition ease-in-out duration-500">
                         <Link
                           href={`${storeCustomizationSetting?.footer?.social_whatsapp}`}
-                        >
-                          <a
-                            aria-label="Social Link"
-                            rel="noreferrer"
-                            target="_blank"
-                            className="block text-center mx-auto text-gray-500 hover:text-white"
-                          >
-                            <WhatsappIcon size={34} round />
-                          </a>
+                          aria-label="Social Link"
+                          rel="noreferrer"
+                          target="_blank"
+                          className="block text-center mx-auto text-gray-500 hover:text-white">
+
+                          <WhatsappIcon size={34} round />
+
                         </Link>
                       </li>
                     )}
@@ -477,18 +466,17 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">
         <p className="text-sm text-gray-500 leading-6">
           Copyright 2023 @{" "}
-          <Link href="#">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-emerald-500"
-            >
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-emerald-500">
+            
               Freshmart
-            </a>
+            
           </Link>
           , All rights reserved.
         </p>

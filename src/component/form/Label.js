@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/form/Label.js
 import React from "react";
 
 const Label = ({ label }) => {

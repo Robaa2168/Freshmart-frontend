@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/cart/Cart.js
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
@@ -103,7 +104,7 @@ const Cart = () => {
                 <div onClick={handleOpenLogin}>{checkoutClass}</div>
               ) : (
                 <Link href="/checkout">
-                  <a>{checkoutClass}</a>
+                  {checkoutClass}
                 </Link>
               )}
             </span>

@@ -34,11 +34,15 @@ const MobileFooter = () => {
             <FiAlignLeft className="w-6 h-6 drop-shadow-xl" />
           </span>
         </button>
-        <Link href="/">
-          <a className="text-xl text-white" rel="noreferrer" aria-label="Home">
-            {' '}
-            <FiHome className="w-6 h-6 drop-shadow-xl" />
-          </a>
+        <Link
+          href="/"
+          className="text-xl text-white"
+          rel="noreferrer"
+          aria-label="Home">
+
+          {' '}
+          <FiHome className="w-6 h-6 drop-shadow-xl" />
+
         </Link>
 
         <button
@@ -56,22 +60,24 @@ const MobileFooter = () => {
           className="text-xl text-white indicator justify-center"
         >
           {userInfo?.image ? (
-            <Link href="/user/dashboard">
-              <a className="relative top-1 w-6 h-6">
-                <Image
-                  width={29}
-                  height={29}
-                  src={userInfo.image}
-                  alt="user"
-                  className="rounded-full"
-                />
-              </a>
+            <Link href="/user/dashboard" className="relative top-1 w-6 h-6">
+
+              <Image
+                width={29}
+                height={29}
+                src={userInfo.image}
+                alt="user"
+                className="rounded-full"
+              />
+
             </Link>
           ) : userInfo?.name ? (
-            <Link href="/user/dashboard">
-              <a className="leading-none font-bold font-serif block">
-                {userInfo?.name[0]}
-              </a>
+            <Link
+              href="/user/dashboard"
+              className="leading-none font-bold font-serif block">
+
+              {userInfo?.name[0]}
+
             </Link>
           ) : (
             <span onClick={() => setModalOpen(!modalOpen)}>

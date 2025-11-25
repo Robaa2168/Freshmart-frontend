@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/form/InputShipping.js
 import React from "react";
 import { FiTruck } from "react-icons/fi";
 

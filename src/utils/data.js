@@ -163,7 +163,7 @@ const contactData = [
     title: "contact-page-box2-title",
     info: "contact-page-box2-info",
     icon: FiPhoneCall,
-    contact: "+254727372017",
+    contact: "+254799322688",
     className: "bg-yellow-100",
   },
   {

@@ -1,3 +1,4 @@
+//freshmart-frontend/src/pages/checkout.js
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { CardElement } from "@stripe/react-stripe-js";
@@ -124,7 +125,7 @@ const Checkout = () => {
                           )}
                           name="contact"
                           type="tel"
-                          placeholder="+254727372017"
+                          placeholder="+254799322688"
                         />
 
                         <Error errorName={errors.contact} />
@@ -294,15 +295,17 @@ const Checkout = () => {
 
                   <div className="grid grid-cols-6 gap-4 lg:gap-6 mt-10">
                     <div className="col-span-6 sm:col-span-3">
-                      <Link href="/">
-                        <a className="bg-indigo-50 border border-indigo-100 rounded py-3 text-center text-sm font-medium text-gray-700 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center font-serif w-full">
-                          <span className="text-xl mr-2">
-                            <IoReturnUpBackOutline />
-                          </span>
-                          {showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.continue_button
-                          )}
-                        </a>
+                      <Link
+                        href="/"
+                        className="bg-indigo-50 border border-indigo-100 rounded py-3 text-center text-sm font-medium text-gray-700 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center font-serif w-full">
+
+                        <span className="text-xl mr-2">
+                          <IoReturnUpBackOutline />
+                        </span>
+                        {showingTranslateValue(
+                          storeCustomizationSetting?.checkout?.continue_button
+                        )}
+
                       </Link>
                     </div>
                     <div className="col-span-6 sm:col-span-3">

@@ -1,8 +1,10 @@
+//freshmart-frontend/src/component/modal/LoginModal.js
 import React from 'react';
 
 //internal import
 import Common from '@component/login/Common';
 import MainModal from '@component/modal/MainModal';
+
 
 const LoginModal = ({ modalOpen, setModalOpen }) => {
   return (

@@ -123,10 +123,12 @@ const Dashboard = ({ title, description, children }) => {
                         className="flex-shrink-0 h-4 w-4"
                         aria-hidden="true"
                       />
-                      <Link href={item.href}>
-                        <a className="inline-flex items-center justify-between ml-2 text-sm font-medium w-full hover:text-emerald-600">
-                          {item.title}
-                        </a>
+                      <Link
+                        href={item.href}
+                        className="inline-flex items-center justify-between ml-2 text-sm font-medium w-full hover:text-emerald-600">
+
+                        {item.title}
+
                       </Link>
                     </span>
                   ))}

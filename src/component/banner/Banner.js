@@ -29,12 +29,12 @@ const Banner = () => {
         </div>
         <Link
           href={`${storeCustomizationSetting?.home?.promotion_button_link}`}
-        >
-          <a className="text-sm font-serif font-medium px-6 py-2 bg-emerald-500 text-center rounded-full text-white hover:bg-emerald-700">
-            {showingTranslateValue(
-              storeCustomizationSetting?.home?.promotion_button_name
-            )}
-          </a>
+          className="text-sm font-serif font-medium px-6 py-2 bg-emerald-500 text-center rounded-full text-white hover:bg-emerald-700">
+
+          {showingTranslateValue(
+            storeCustomizationSetting?.home?.promotion_button_name
+          )}
+
         </Link>
       </div>
     </>

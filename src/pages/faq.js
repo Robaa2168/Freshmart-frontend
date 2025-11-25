@@ -1,7 +1,8 @@
+//freshmart-frontend/src/pages/faq.js
 import React from "react";
 import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
+import { ChevronUpIcon } from "@heroicons/react/24/solid"; 
 
 //internal import
 import Layout from "@layout/Layout";

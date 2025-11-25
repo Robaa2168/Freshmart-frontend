@@ -1,3 +1,4 @@
+//freshmart-frontend/src/component/form/InputArea.js
 import React from "react";
 import Label from "@component/form/Label";
 
